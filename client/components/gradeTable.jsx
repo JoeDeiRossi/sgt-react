@@ -7,7 +7,7 @@ function GradeTable(props) {
   });
 
   return (
-    <div className="container">
+    <div className="container gradeTableContainer">
       <div className="row">
         <div className="col-7 sgtColumn">
           Student Name

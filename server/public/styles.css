@@ -12,7 +12,26 @@
   margin: 15px 50px 15px 0;
 }
 
+.gradeTableContainer {
+  width: calc(70% - 50px);
+  position: absolute;
+  left: 50px;
+}
+
 .sgtColumn {
   border: 1px solid black;
   background-color: lightgray;
+}
+
+.gradeFormContainer {
+  width: calc(30% - 50px);
+  position: absolute;
+  right: 50px;
+  padding-left: 20px;
+}
+
+.gradeFormInput {
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid black;
 }
