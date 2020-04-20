@@ -10,6 +10,8 @@ class App extends React.Component {
     this.state = {
       grades: []
     };
+
+    this.addStudent = this.addStudent.bind(this);
   }
 
   getAverageGrade() {
@@ -31,14 +33,37 @@ class App extends React.Component {
         grades: data
       });
     });
-  }
+  };
+
+  addStudent(studentInfo) {
+    let { nameInputValue, gradeInputValue, courseInputValue } = studentInfo;
+    const data = {
+      "name": nameInputValue,
+      "course": courseInputValue,
+      "grade": gradeInputValue
+    };
+
+    fetch('/api/grades', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'  //What does this mean/do??
+      },
+      body: JSON.stringify(data)
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      this.setState({
+        grades: [...this.state.grades, data]
+      })
+    })
+  };
 
   render() {
     return (
       <React.Fragment>
         <Header average={this.getAverageGrade()} />
         <GradeTable grades={this.state.grades} />
-        <GradeForm />
+        <GradeForm addStudent={this.addStudent} />
       </React.Fragment>
     );
   }

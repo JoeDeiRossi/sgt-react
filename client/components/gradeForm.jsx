@@ -8,12 +8,31 @@ class GradeForm extends React.Component {
       nameInputValue: '',
       courseInputValue: '',
       gradeInputValue: ''
-    }
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+  };
+
+  handleChange(event) {
+    let currentInput = event.target.name + 'InputValue';
+    this.setState({ [currentInput]: event.target.value });
   };
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.addStudent(this.state);
     console.log('Form submitted');
+  };
+
+  handleCancel(event) {
+    event.preventDefault();
+    this.setState({
+      nameInputValue: '',
+      courseInputValue: '',
+      gradeInputValue: ''
+    })
   }
 
   render() {
@@ -24,24 +43,33 @@ class GradeForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
+            name="name"
             placeholder=" Student Name"
+            autoComplete="off"
             className="gradeFormInput"
             value={nameInputValue}
+            onChange={this.handleChange}
           />
           <input
             type="text"
+            name="course"
             placeholder=" Course"
+            autoComplete="off"
             className="gradeFormInput"
             value={courseInputValue}
+            onChange={this.handleChange}
           />
           <input
             type="text"
+            name="grade"
             placeholder=" Grade"
+            autoComplete="off"
             className="gradeFormInput"
             value={gradeInputValue}
+            onChange={this.handleChange}
           />
-          <button className="btn btn-primary">Add</button>
-          <button className="btn btn-secondary">Cancel</button>
+          <button className="btn btn-primary addButton">Add</button>
+          <button className="btn btn-secondary" onClick={this.handleCancel}>Cancel</button>
         </form>
       </div>
     )
