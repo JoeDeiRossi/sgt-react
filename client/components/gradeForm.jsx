@@ -15,6 +15,14 @@ class GradeForm extends React.Component {
     this.handleCancel = this.handleCancel.bind(this);
   };
 
+  resetForm() {
+    this.setState({
+      nameInputValue: '',
+      courseInputValue: '',
+      gradeInputValue: ''
+    })
+  };
+
   handleChange(event) {
     let currentInput = event.target.name + 'InputValue';
     this.setState({ [currentInput]: event.target.value });
@@ -23,16 +31,12 @@ class GradeForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.addStudent(this.state);
-    console.log('Form submitted');
+    this.resetForm();
   };
 
   handleCancel(event) {
     event.preventDefault();
-    this.setState({
-      nameInputValue: '',
-      courseInputValue: '',
-      gradeInputValue: ''
-    })
+    this.resetForm();
   }
 
   render() {

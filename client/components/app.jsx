@@ -19,7 +19,7 @@ class App extends React.Component {
     let gradeSum = 0;
 
     for (let index = 0; index < grades.length; index++) {
-      gradeSum += grades[index].grade;
+      gradeSum += parseInt(grades[index].grade);
     }
 
     return Math.ceil(gradeSum / grades.length).toString();
@@ -37,7 +37,7 @@ class App extends React.Component {
 
   addStudent(studentInfo) {
     let { nameInputValue, gradeInputValue, courseInputValue } = studentInfo;
-    const data = {
+    const studentData = {
       "name": nameInputValue,
       "course": courseInputValue,
       "grade": gradeInputValue
@@ -48,7 +48,7 @@ class App extends React.Component {
       headers: {
         'Content-Type': 'application/json'  //What does this mean/do??
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(studentData)
     }).then(response => {
       return response.json();
     }).then(data => {
