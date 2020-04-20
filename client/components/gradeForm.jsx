@@ -67,7 +67,7 @@ class GradeForm extends React.Component {
           />
           <i className="fas fa-graduation-cap gradeFormIcon"></i>
           <input
-            type="text"
+            type="number"
             name="grade"
             placeholder=" Grade"
             autoComplete="off"
