@@ -12,6 +12,7 @@ class App extends React.Component {
     };
 
     this.addStudent = this.addStudent.bind(this);
+    this.deleteStudent = this.deleteStudent.bind(this);
   }
 
   getAverageGrade() {
@@ -46,7 +47,7 @@ class App extends React.Component {
     fetch('/api/grades', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'  //What does this mean/do??
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(studentData)
     }).then(response => {
@@ -58,11 +59,25 @@ class App extends React.Component {
     })
   };
 
+  deleteStudent(id) {
+    fetch(`/api/grades/${id}`, {
+      method: 'DELETE'
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      this.setState({
+        grades: this.state.grades.filter(student => {
+          return student.id !== id;
+        })
+      });
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
         <Header average={this.getAverageGrade()} />
-        <GradeTable grades={this.state.grades} />
+        <GradeTable grades={this.state.grades} deleteStudent={this.deleteStudent} />
         <GradeForm addStudent={this.addStudent} />
       </React.Fragment>
     );

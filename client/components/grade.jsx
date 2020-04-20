@@ -7,6 +7,12 @@ class Grade extends React.Component {
     this.state = {
 
     };
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete() {
+    this.props.deleteStudent(this.props.grade.id);
   }
 
   render() {
@@ -24,7 +30,7 @@ class Grade extends React.Component {
           {grade}
         </div>
         <div className="col-2 sgtColumn">
-          <button className="btn btn-danger deleteButton">Delete</button>
+          <button className="btn btn-danger deleteButton" onClick={this.handleDelete}>Delete</button>
         </div>
       </div>
     );
