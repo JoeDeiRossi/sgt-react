@@ -45,6 +45,7 @@ class GradeForm extends React.Component {
     return (
       <div className="gradeFormContainer">
         <form onSubmit={this.handleSubmit}>
+          <i className="fas fa-user gradeFormIcon"></i>
           <input
             type="text"
             name="name"
@@ -54,6 +55,7 @@ class GradeForm extends React.Component {
             value={nameInputValue}
             onChange={this.handleChange}
           />
+          <i className="fas fa-book gradeFormIcon"></i>
           <input
             type="text"
             name="course"
@@ -63,6 +65,7 @@ class GradeForm extends React.Component {
             value={courseInputValue}
             onChange={this.handleChange}
           />
+          <i className="fas fa-graduation-cap gradeFormIcon"></i>
           <input
             type="text"
             name="grade"
