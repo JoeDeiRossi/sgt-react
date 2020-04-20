@@ -8,15 +8,18 @@ function GradeTable(props) {
 
   return (
     <div className="container gradeTableContainer">
-      <div className="row">
-        <div className="col-7 sgtColumn">
+      <div className="row gradeTableHeader">
+        <div className="col-4 sgtColumn">
           Student Name
         </div>
-        <div className="col sgtColumn">
+        <div className="col-4 sgtColumn">
           Course
         </div>
-        <div className="col sgtColumn">
+        <div className="col-2 sgtColumn">
           Grade
+        </div>
+        <div className="col-2 sgtColumn">
+          Operations
         </div>
       </div>
       {grades}

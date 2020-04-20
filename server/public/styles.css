@@ -18,9 +18,24 @@
   left: 50px;
 }
 
+.gradeTableHeader {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 .sgtColumn {
   border: 1px solid black;
   background-color: lightgray;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 5px;
+}
+
+.deleteButton {
+  border-style: outset;
+  border-width: 2px;
+  padding: 1px 6px;
+  margin-bottom: 5px;
 }
 
 .gradeFormContainer {
@@ -41,5 +56,5 @@
 }
 
 .addButton {
-  margin-right: 15px;
+  margin: 0 10%;
 }
